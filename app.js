@@ -1,38 +1,60 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let listaDeAmigos = [];
 
 function agregarAmigo() {
-  // 1. Capturar el valor del campo de entrada
   let nombreAmigo = document.getElementById('amigo').value;
+  let lista = document.getElementById('listaAmigos');
   
-  // 2. Validar la entrada
   if (nombreAmigo.trim() === '') {
     alert('Por favor, inserte un nombre.');
     return;
   }
   
-  // 3. Actualizar el array de amigos
   listaDeAmigos.push(nombreAmigo);
-  console.log(listaDeAmigos); // Opcional: para verificar en la consola que se agregó el nombre
   
-  // 4. Limpiar el campo de entrada
+  // Llama a la función para actualizar la lista en el HTML
+  mostrarListaDeAmigos();
+  
   document.getElementById('amigo').value = '';
 }
 
+// Nueva función para mostrar la lista de amigos en el HTML
+function mostrarListaDeAmigos() {
+  let lista = document.getElementById('listaAmigos');
+  lista.innerHTML = ''; // Limpiar la lista anterior
+  
+  for (let i = 0; i < listaDeAmigos.length; i++) {
+    let li = document.createElement('li');
+    li.textContent = listaDeAmigos[i];
+    lista.appendChild(li);
+  }
+}
+
 function sortearAmigo() {
-  // 1. Validar que haya amigos disponibles
   if (listaDeAmigos.length === 0) {
     alert('Por favor, agrega amigos a la lista antes de sortear.');
     return;
   }
   
-  // 2. Generar un índice aleatorio
   let indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
-  
-  // 3. Obtener el nombre sorteado
   let amigoSorteado = listaDeAmigos[indiceAleatorio];
   
-  // 4. Mostrar el resultado
   let resultadoElemento = document.getElementById('resultado');
-  resultadoElemento.innerHTML = `<p>${amigoSorteado}</p>`;
+  
+  // Se crea un pop-up que se ve mejor que un alert
+  resultadoElemento.innerHTML = `
+    <div class="pop-up">
+      <div class="pop-up-content">
+        <span class="close-button" onclick="cerrarPopUp()">&times;</span>
+        <h2>🎉 ¡Felicidades! 🎉</h2>
+        <p>El amigo secreto es:</p>
+        <h3>${amigoSorteado}</h3>
+      </div>
+    </div>
+  `;
+}
+
+// Nueva función para cerrar el pop-up
+function cerrarPopUp() {
+  let resultadoElemento = document.getElementById('resultado');
+  resultadoElemento.innerHTML = '';
 }
