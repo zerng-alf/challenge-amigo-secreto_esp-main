@@ -190,3 +190,84 @@ ul {
   cursor: pointer;
   color: var(--color-text);
 }
+
+/* Animación para los elementos de la lista */
+#listaAmigos li {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Transición para los botones */
+.button-draw, .button-add {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-draw:hover, .button-add:hover {
+    transform: scale(1.05); /* Efecto de crecimiento */
+}
+
+.contador-amigos {
+    font-family: "Inter", sans-serif;
+    font-size: 18px; /* Ajusta el tamaño de la fuente si lo deseas */
+    color: var(--color-primary); /* Usa el color primario o el que prefieras */
+    margin-top: 15px; /* Espacio superior */
+    text-align: center; /* Centra el texto */
+    font-weight: bold; /* Hace que el texto sea más destacado */
+}
+
+.contador-amigos span {
+    color: var(--color-button); /* Destaca el número con el color del botón */
+}
+
+.button-container {
+    display: flex; /* Para alinear los botones horizontalmente */
+    flex-direction: column; /* Cambia a columna para apilarlos */
+    align-items: center; /* Centra los botones horizontalmente */
+    width: 300px;
+    justify-content: center;
+    margin-top: 20px; /* Añade espacio entre la lista/resultado y los botones */
+}
+
+.button-container button {
+    margin: 5px 0; /* Espacio entre los botones */
+    padding: 15px 30px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    width: 100%; /* Para que los botones tengan el mismo ancho */
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho */
+}
+
+.button-container .button-add { /* Aplica los estilos del botón "Añadir" */
+    background-color: var(--color-tertiary);
+    color: var(--color-text);
+}
+
+.button-container .button-add:hover {
+    background-color: #a1a1a1;
+}
+
+.button-container .button-draw { /* Aplica los estilos del botón "Sortear amigo" */
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    background-color: var(--color-button);
+    font-size: 16px;
+    justify-content: center; /* Centra el texto y el icono */
+}
+
+.button-container .button-draw img {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.button-container .button-draw:hover {
+    background-color: var(--color-button-hover);
+}
